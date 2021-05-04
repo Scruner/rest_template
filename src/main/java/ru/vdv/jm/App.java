@@ -1,59 +1,56 @@
 package ru.vdv.jm;
 
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import ru.vdv.jm.entity.Users;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class App {
 
     private static final String GET_USERS_ENDPOINT_URL = "http://91.241.64.178:7081/api/users";
-    private static final String CREATE_USER_ENDPOINT_URL = "http://91.241.64.178:7081/api/users";
-    private static final String UPDATE_USER_ENDPOINT_URL = "http://91.241.64.178:7081/api/users/{id}";
-    private static final String DELETE_USER_ENDPOINT_URL = "http://91.241.64.178:7081/api/users/{id}";
-    private static RestTemplate restTemplate = new RestTemplate();
+    private static final RestTemplate restTemplate = new RestTemplate();
+    private static final HttpHeaders headers = new HttpHeaders();
+
+    private static final Users user = new Users("James", "Brown", (byte) 27);
 
     public static void main(String[] args) {
-        App restClient = new App();
-
-        restClient.getUsers();
-        restClient.createUser();
-        restClient.updateUser();
-        restClient.deleteUser();
+        App app = new App();
+        app.getResult();
     }
 
     private void getUsers() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        ResponseEntity<String> rsl = restTemplate.exchange(GET_USERS_ENDPOINT_URL, HttpMethod.GET, entity,
-                String.class);
-        System.out.println(rsl);
+        ResponseEntity<String> response = restTemplate.getForEntity(GET_USERS_ENDPOINT_URL, String.class);
+        headers.set("Cookie", response.getHeaders()
+                .get("Set-Cookie")
+                .get(0));
     }
 
-    private void createUser() {
-        Users newUser = new Users("James", "Brown", (byte) 27);
-        RestTemplate restTemplate = new RestTemplate();
-        Users rsl = restTemplate.postForObject(CREATE_USER_ENDPOINT_URL, newUser, Users.class);
-        System.out.println(rsl);
+    private ResponseEntity createUser() {
+        HttpEntity<Users> requestBodyPost = new HttpEntity(user, headers);
+        return restTemplate.postForEntity(GET_USERS_ENDPOINT_URL, requestBodyPost, Users.class);
     }
 
-    private void updateUser() {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("id", "3");
-        Users updateUser = new Users("Thomas", "Shelby", (byte) 27);
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.put(UPDATE_USER_ENDPOINT_URL, updateUser, params);
+    private ResponseEntity<Users> updateUser() {
+        user.setName("Thomas");
+        user.setLastName("Shelby");
+        HttpEntity<Users> requestBodyPut = new HttpEntity<>(user, headers);
+        return restTemplate.exchange(GET_USERS_ENDPOINT_URL, HttpMethod.PUT, requestBodyPut, Users.class);
     }
 
-    private void deleteUser() {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("id", "1");
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.delete(DELETE_USER_ENDPOINT_URL, params);
+    private ResponseEntity<Users> deleteUser() {
+        HttpEntity<Users> requestBodyDelete = new HttpEntity<>(headers);
+        return restTemplate.exchange(GET_USERS_ENDPOINT_URL + "/" + user.getId(), HttpMethod.DELETE, requestBodyDelete, Users.class);
+    }
+
+    public void getResult() {
+        getUsers();
+        System.out.println("RESULT: "
+                + createUser().getBody()
+                + updateUser().getBody()
+                + deleteUser().getBody());
     }
 }
 
