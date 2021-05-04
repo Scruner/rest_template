@@ -1,38 +1,23 @@
 package ru.vdv.jm;
 
 import org.springframework.http.*;
-import org.springframework.http.client.ClientHttpRequestExecution;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.RestTemplate;
 import ru.vdv.jm.entity.Users;
 
-import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-public class App implements ClientHttpRequestInterceptor {
-
-    private final String headerName;
-    private final String headerValue;
+public class App {
 
     private static final String GET_USERS_ENDPOINT_URL = "http://91.241.64.178:7081/api/users";
     private static final String CREATE_USER_ENDPOINT_URL = "http://91.241.64.178:7081/api/users";
     private static final String UPDATE_USER_ENDPOINT_URL = "http://91.241.64.178:7081/api/users/{id}";
     private static final String DELETE_USER_ENDPOINT_URL = "http://91.241.64.178:7081/api/users/{id}";
     private static RestTemplate restTemplate = new RestTemplate();
-    //RestTemplate restTemplate = new RestTemplate();
-
-    public App(String headerName, String headerValue) {
-        this.headerName = headerName;
-        this.headerValue = headerValue;
-    }
 
     public static void main(String[] args) {
-        List<ClientHttpRequestInterceptor> interceptors = new ArrayList<ClientHttpRequestInterceptor>();
-        interceptors.add(new App("JSESSIONID=2158003970B72F2BCC0F1FFD97F817DF; Path=/; HttpOnly", "Cookie"));
-
-        restTemplate.setInterceptors(interceptors);
-       // App restClient = new App("JSESSIONID=2158003970B72F2BCC0F1FFD97F817DF; Path=/; HttpOnly", "Cookie");
+        App restClient = new App();
 
         restClient.getUsers();
         restClient.createUser();
@@ -69,15 +54,6 @@ public class App implements ClientHttpRequestInterceptor {
         params.put("id", "1");
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(DELETE_USER_ENDPOINT_URL, params);
-    }
-
-    @Override
-    public ClientHttpResponse intercept(
-            HttpRequest request, byte[] body, ClientHttpRequestExecution execution)
-            throws IOException {
-        request.getHeaders()
-                .set(headerName, headerValue);
-        return execution.execute(request, body);
     }
 }
 
