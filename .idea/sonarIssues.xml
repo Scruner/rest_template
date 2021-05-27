@@ -13,7 +13,52 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../job4j_tracker/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../job4j_tracker/src/main/java/ru/job4j/collection/Departments.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../job4j_tracker/src/main/java/ru/job4j/collection/Task.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../job4j_tracker/src/main/java/ru/job4j/function/FunctionalInterfaces.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../job4j_tracker/src/main/java/ru/job4j/lambda/Attachment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../job4j_tracker/src/main/java/ru/job4j/lambda/AttachmentSort.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../job4j_tracker/src/test/java/ru/job4j/collection/DepDescComp.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../job4j_tracker/src/test/java/ru/job4j/collection/DepDescCompTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../job4j_tracker/src/test/java/ru/job4j/collection/Departments.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../job4j_tracker/src/test/java/ru/job4j/collection/DepartmentsTest.java">
           <value>
             <set />
           </value>
@@ -29,6 +74,51 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/ru/vdv/jm/entity/Users.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../rest_template_jm/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/JavaRushMyTasks/JavaRushTasks/1.JavaSyntax/src/com/javarush/task/pro/task13/task1301/Solution.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/JavaRushMyTasks/JavaRushTasks/1.JavaSyntax/src/com/javarush/task/pro/task13/task1302/Solution.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/JavaRushMyTasks/JavaRushTasks/1.JavaSyntax/src/com/javarush/task/pro/task13/task1303/Solution.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/JavaRushMyTasks/JavaRushTasks/1.JavaSyntax/src/com/javarush/task/pro/task13/task1304/Solution.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/JavaRushMyTasks/JavaRushTasks/1.JavaSyntax/src/com/javarush/task/pro/task13/task1305/Solution.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/JavaRushMyTasks/JavaRushTasks/1.JavaSyntax/src/com/javarush/task/pro/task13/task1306/Solution.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/JavaRushMyTasks/JavaRushTasks/1.JavaSyntax/src/com/javarush/task/pro/task13/task1307/Solution.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="D:/JavaRushMyTasks/JavaRushTasks/1.JavaSyntax/src/com/javarush/task/pro/task13/task1308/Solution.java">
           <value>
             <set />
           </value>
